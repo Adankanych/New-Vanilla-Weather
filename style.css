@@ -1,0 +1,84 @@
+body {
+  font-family: "Lobster", cursive;
+  font-family: "Roboto", sans-serif;
+}
+h1,
+h4 {
+  color: #9fd3c7;
+  border: 2px solid #142d4c;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  background: #142d4c;
+}
+p {
+  font-size: 20px;
+}
+.weather-app {
+  background: #385170;
+  border: 2px solid #142d4c;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.city {
+  margin: 20px auto;
+}
+.search,
+.currentLocation {
+  color: #fff;
+  background-color: #9fd3c7;
+  margin: 20px auto;
+  border: 1px solid #385170;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  transition: all 200ms ease;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+  cursor: pointer;
+}
+.current {
+  background: #ececec;
+  border: 2px solid #142d4c;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.weather-icon {
+  color: #142d4c;
+  font-size: 60px;
+}
+.mainTemperature {
+  font-size: 80px;
+  font-weight: 400;
+}
+.celsius,
+.fahrenheit {
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.card {
+  background: #ececec;
+  border: 2px solid #142d4c;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.first-day,
+.second-day,
+.third-day,
+.fourth-day,
+.fifth-day {
+  background: #ececec;
+  border: 2px solid #142d4c;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.emoji {
+  font-size: 30px;
+  color: #142d4c;
+}
