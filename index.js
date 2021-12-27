@@ -49,11 +49,13 @@ function showWeather(response) {
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#main-temperature");
   let descriptionElement = document.querySelector("#description");
+  let feelsLifeElement = document.querySelector("#feels-like");
   let windElement = document.querySelector("#wind");
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  feelsLifeElement.innerHTML = Math.round(response.data.main.feels_like);
 }
 
 let apiKey = "8f92bcf1448991b5fa444b563468f01b";
