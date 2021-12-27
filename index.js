@@ -45,19 +45,22 @@ let toCelsius = document.querySelector("#celsius-link");
 toCelsius.addEventListener("click", convertToCelsius); */
 
 function showWeather(response) {
-  console.log(response);
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#main-temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  console.log(response.data);
+  let cityElement = document.querySelector("#city");
+  let temperatureElement = document.querySelector("#main-temperature");
+  let descriptionElement = document.querySelector("#description");
+  let windElement = document.querySelector("#wind");
+  cityElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-function findCity(city) {
-  let apiKey = "8f92bcf1448991b5fa444b563468f01b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-}
+let apiKey = "8f92bcf1448991b5fa444b563468f01b";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showWeather);
 
+/*
 function handleSubmitEvent(event) {
   event.preventDefault();
   let city = document.querySelector("#exampleWeather").value;
@@ -80,4 +83,4 @@ currentLocation.addEventListener("click", getCurrentPosition);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmitEvent);
 
-findCity("Grove City");
+findCity("Grove City");*/

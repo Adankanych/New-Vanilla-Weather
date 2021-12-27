@@ -59,7 +59,12 @@
               <h3>Sunday</h3>
               <div class="row">
                 <div class="col">
-                  <i class="fas fa-sun weather-icon"></i>
+                  <ul class="description">
+                    <li id="description"></li>
+                    <li>
+                      <i class="fas fa-sun weather-icon"></i>
+                    </li>
+                  </ul>
                 </div>
                 <div class="col">
                   <span class="temp-line">
@@ -79,9 +84,10 @@
             <div class="card" style="width: 18rem">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                  <i class="feelsLike" id="feels-like"></i>
+                  Feels Like: <span id="feels-like"></span>
                 </li>
                 <li class="list-group-item">
+                  Wind:
                   <i class="fas fa-wind wind-icon" id="wind"></i>
                 </li>
               </ul>

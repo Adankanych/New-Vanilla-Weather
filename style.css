@@ -24,6 +24,9 @@ p {
 .city {
   margin: 20px auto;
 }
+.description {
+  text-transform: capitalize;
+}
 .search,
 .currentLocation {
   color: #fff;
