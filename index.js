@@ -84,7 +84,8 @@ function showWeather(response) {
 }
 
 let apiKey = "8f92bcf1448991b5fa444b563468f01b";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=${apiKey}&units=metric`;
+let city = "Moscow";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showWeather);
 
 /*
