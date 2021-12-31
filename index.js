@@ -1,5 +1,5 @@
 //Feature #1 display the current date and time using Javascript
-
+/*
 let currentTime = new Date();
 
 let currentHour = currentTime.getHours();
@@ -24,7 +24,7 @@ let days = [
 let currentDay = days[currentTime.getDay()];
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${currentDay} ${currentHour}:${currentMintues}`;
-
+*/
 //Bonus Feature: add link to convert Celsius to Fahrenheit
 /*function convertToFarenheit(event) {
   event.preventDefault();
@@ -43,6 +43,29 @@ function convertToCelsius(event) {
 
 let toCelsius = document.querySelector("#celsius-link");
 toCelsius.addEventListener("click", convertToCelsius); */
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${mintues}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  return `${day} ${hours}:${minutes}`;
+}
 
 function showWeather(response) {
   console.log(response.data);
@@ -51,11 +74,13 @@ function showWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let feelsLifeElement = document.querySelector("#feels-like");
   let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   feelsLifeElement.innerHTML = Math.round(response.data.main.feels_like);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 let apiKey = "8f92bcf1448991b5fa444b563468f01b";
