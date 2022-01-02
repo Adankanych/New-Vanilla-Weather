@@ -22,6 +22,31 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <div class="weather-forcaste-date">${day}</div>
+              <img
+                src="http://openweathermap.org/img/wn/50d@2x.png"
+                width="36"
+              />
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">18°</span>
+                <span class="weather-forecast-temperature-min">12°</span>
+              </div>
+            </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#main-temperature");
@@ -83,9 +108,4 @@ let toCelsius = document.querySelector("#celsius-link");
 toCelsius.addEventListener("click", convertToCelsius);
 
 search("Moscow");
-/*function getCurrentPosition(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(findLocation);
-}
-let currentLocation = document.querySelector("#current-location");
-currentLocation.addEventListener("click", getCurrentPosition);*/
+displayForecast();
