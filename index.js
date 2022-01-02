@@ -1,30 +1,3 @@
-//Feature #1 display the current date and time using Javascript
-/*
-let currentTime = new Date();
-
-let currentHour = currentTime.getHours();
-let currentMintues = currentTime.getMinutes();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`;
-}
-if (currentMintues < 10) {
-  currentMintues = `0${currentMintues}`;
-}
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-let currentDay = days[currentTime.getDay()];
-let h3 = document.querySelector("h3");
-h3.innerHTML = `${currentDay} ${currentHour}:${currentMintues}`;
-*/
 //Bonus Feature: add link to convert Celsius to Fahrenheit
 /*function convertToFarenheit(event) {
   event.preventDefault();
@@ -40,9 +13,9 @@ function convertToCelsius(event) {
   let mainTemperature = document.querySelector("#main-temperature");
   mainTemperature.innerHTML = "27";
 }
-
 let toCelsius = document.querySelector("#celsius-link");
 toCelsius.addEventListener("click", convertToCelsius); */
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -68,7 +41,6 @@ function formatDate(timestamp) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#main-temperature");
   let descriptionElement = document.querySelector("#description");
@@ -90,32 +62,26 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "8f92bcf1448991b5fa444b563468f01b";
-let city = "Moscow";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showWeather);
-
-/*
-function handleSubmitEvent(event) {
-  event.preventDefault();
-  let city = document.querySelector("#exampleWeather").value;
-  findCity(city);
-}
-
-function findLocation(position) {
+function search(city) {
   let apiKey = "8f92bcf1448991b5fa444b563468f01b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(showWeather);
 }
 
-function getCurrentPosition(event) {
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#exampleWeather");
+  search(city.value);
+}
+search("Moscow");
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+/*function getCurrentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(findLocation);
 }
-let currentLocation = document.querySelector("#current");
-currentLocation.addEventListener("click", getCurrentPosition);
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmitEvent);
-
-findCity("Grove City");*/
+let currentLocation = document.querySelector("#current-location");
+currentLocation.addEventListener("click", getCurrentPosition);*/
