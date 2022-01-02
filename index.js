@@ -1,21 +1,3 @@
-//Bonus Feature: add link to convert Celsius to Fahrenheit
-/*function convertToFarenheit(event) {
-  event.preventDefault();
-  let mainTemperature = document.querySelector("#main-temperature");
-  mainTemperature.innerHTML = "80";
-}
-
-let toFahrenheit = document.querySelector("#fahrenheit-link");
-toFahrenheit.addEventListener("click", convertToFarenheit);
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let mainTemperature = document.querySelector("#main-temperature");
-  mainTemperature.innerHTML = "27";
-}
-let toCelsius = document.querySelector("#celsius-link");
-toCelsius.addEventListener("click", convertToCelsius); */
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -49,6 +31,8 @@ function showWeather(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -74,11 +58,31 @@ function handleSubmit(event) {
   let city = document.querySelector("#exampleWeather");
   search(city.value);
 }
-search("Moscow");
+function convertToFarenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temperature");
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
+let toFahrenheit = document.querySelector("#fahrenheit-link");
+toFahrenheit.addEventListener("click", convertToFarenheit);
+
+let toCelsius = document.querySelector("#celsius-link");
+toCelsius.addEventListener("click", convertToCelsius);
+
+search("Moscow");
 /*function getCurrentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(findLocation);
