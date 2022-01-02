@@ -81,17 +81,26 @@ li::first-letter {
   padding: 20px;
 }
 
-.first-day,
-.second-day,
-.third-day,
-.fourth-day,
-.fifth-day {
+.weather-forecast {
   background: #ececec;
   border: 2px solid #142d4c;
   border-radius: 10px;
   margin: 20px auto;
   padding: 20px;
+  text-align: center;
 }
+
+.weather-forcaste-date {
+  font-size: 16px;
+  opacity: 0.6;
+}
+.weather-forecast-temperature {
+  font-size: 13px;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.6;
+}
+
 .emoji {
   font-size: 30px;
   color: #142d4c;
